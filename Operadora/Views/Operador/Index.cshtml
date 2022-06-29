@@ -1,22 +1,20 @@
 ﻿@model IEnumerable<Pacote>
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
-
-
 
 <h1>Pacotes</h1>
 
 <table class="table table-bordered table-striped" style="width: 100%">
 	<thead>
-		<tr>
-			<th>
-				Nome do Pacote
-			</th>
-			<th>
-				Conteudo Pacote
-			</th>
-		</tr>
+	<tr>
+		<th>
+			Nome do Pacote
+		</th>
+		<th>
+			Conteudo Pacote
+		</th>
+	</tr>
 	</thead>
 	<tbody>
 	@foreach (var obj in Model)
@@ -29,7 +27,6 @@
 			@obj.ConteudoPacote
 		</tr>
 	}
-	<img id="Foto1.jpg" />
 	</tbody>
-	
 </table>
+
