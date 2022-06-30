@@ -8,6 +8,7 @@ public class Pacote
     public int IdPacote { get; set; }
     [Required]
     public string NomePacote { get; set; }
+   
     public string ConteudoPacote { get; set; }
     public DateTime CreatedData { get; set; } 
 }

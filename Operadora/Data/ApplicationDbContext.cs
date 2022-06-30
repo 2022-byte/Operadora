@@ -11,5 +11,6 @@ namespace Operadora.Data
         }
 
         public DbSet<Pacote> Pacotes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
     }
 }

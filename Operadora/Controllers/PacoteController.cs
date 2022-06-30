@@ -19,5 +19,74 @@ namespace Operadora.Controllers
 
             return View(objPacoteList);
         }
+
+        // get action
+        public IActionResult Create()
+        {
+
+
+            return View();
+        }
+
+        //Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Pacote obj)
+        {
+            if (obj.NomePacote == obj.ConteudoPacote.ToString())
+            {
+                ModelState.AddModelError("NomePacote", "O nome do conteudo é igual ao nome do pacote. ");
+            }
+            if (ModelState.IsValid)
+            {
+                _db.Pacotes.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index", "Pacote");
+
+            }
+
+            return View(obj);
+        }
+
+        // get action
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var pacoteFromDb = _db.Pacotes.Find(id);
+            //var pacoteFromDbFirst = _db.Pacotes.FirstOrDefault(u => u.IdPacote==id);
+            //var pacoteFromDbSingle = _db.Pacotes.SingleOrDefault(u => u.IdPacote == id);
+
+            if (pacoteFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(pacoteFromDb);
+
+        }
+
+        //Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Pacote obj)
+        {
+            if (obj.NomePacote == obj.ConteudoPacote.ToString())
+            {
+                ModelState.AddModelError("NomePacote", "O nome do conteudo é igual ao nome do pacote. ");
+            }
+            if (ModelState.IsValid)
+            {
+                _db.Pacotes.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index", "Pacote");
+
+            }
+
+            return View(obj);
+        }
     }
 }

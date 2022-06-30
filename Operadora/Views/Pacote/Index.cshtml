@@ -6,17 +6,33 @@
 
 
 <h1>Pacotes</h1>
+<div class="container p-3">
+	<div class="row pt-4">
+		<div class="col-6">
+			<h2 class="text-primary">Lista de Pacotes</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-controller="Pacote" asp-action="Create" class="btn btn-primary">
+				<i class="bi bi-file-plus"></i> &nbsp; Criar um novo Pacote
+			</a>
+				
+
+		</div>
+	</div>
+	<br/><br />
+
 
 <table class="table table-bordered table-striped" style="width: 100%">
 	<thead>
-		<tr>
-			<th>
-				Nome do Pacote
-			</th>
-			<th>
-				Conteudo Pacote
-			</th>
-		</tr>
+	<tr>
+		<th>
+			Nome do Pacote
+		</th>
+		<th>
+			Conteudo Pacote
+		</th>
+		<th></th>
+	</tr>
 	</thead>
 	<tbody>
 	@foreach (var obj in Model)
@@ -26,10 +42,18 @@
 				@obj.NomePacote
 			</td>
 			<td width="30%">
-			@obj.ConteudoPacote
+				@obj.ConteudoPacote 
+			</td>
+			<td>
+				<div class="w-75 btn-group" role="group">
+					<a asp-controller="Pacote" asp-action="Edit" asp-route-id="@obj.IdPacote" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> &nbsp; Edit</a>
+				</div>
+			</td>
 		</tr>
 	}
-	<img id="Foto1.jpg" />
+	
+	
 	</tbody>
 	
 </table>
+</div>
