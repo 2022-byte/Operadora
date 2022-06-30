@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Operadora.Data;
 
@@ -11,9 +12,10 @@ using Operadora.Data;
 namespace Operadora.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220630161128_AddClienteToDataBase")]
+    partial class AddClienteToDataBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,27 +43,6 @@ namespace Operadora.Migrations
                     b.HasKey("IdCliente");
 
                     b.ToTable("Clientes");
-                });
-
-            modelBuilder.Entity("Operadora.Models.Operador", b =>
-                {
-                    b.Property<int>("IdOperador")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdOperador"), 1L, 1);
-
-                    b.Property<string>("EmailOperador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomeOperador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdOperador");
-
-                    b.ToTable("Operadors");
                 });
 
             modelBuilder.Entity("Operadora.Models.Pacote", b =>

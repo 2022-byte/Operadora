@@ -3,12 +3,13 @@ using MessagePack;
 
 namespace Operadora.Models
 {
-    public class Cliente
+    public class Operador
     {
         [System.ComponentModel.DataAnnotations.Key]
-        public int IdCliente { get; set; }
+        public int IdOperador { get; set; }
         [Microsoft.Build.Framework.Required]
-        public string NomeCliente { get; set; }
-        public string Email { get; set; }
+        public string NomeOperador { get; set; }
+
+        public string EmailOperador { get; set; }
     }
 }
