@@ -1,0 +1,34 @@
+﻿@model Operador
+
+<form method="post" asp-action="Edit">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Editar Operador</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="NomeOperador"></label>
+			<input asp-for="NomeOperador" class="form-control" />
+			<span asp-validation-for="NomeOperador" class="text-danger"></span>
+		</div>
+		<div asp-validation-summary="All"></div>
+		<div class="mb-3">
+			<label asp-for="EmailOperador"></label>
+			<input asp-for="EmailOperador" class="form-control" />
+			<span asp-validation-for="EmailOperador" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width: 150px"><i class="bi bi-plus-square"></i> &nbsp; Update</button>
+		<a asp-controller="Operador" asp-action="Index" class="btn btn-secondary" style="width: 150px"><i class="bi bi-arrow-return-left"></i> &nbsp;
+			Retornar Lista
+
+		</a>
+	</div>
+
+</form>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+}
+	

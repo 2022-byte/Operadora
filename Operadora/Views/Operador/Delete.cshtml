@@ -1,0 +1,35 @@
+﻿@model Operador
+
+<form method="post" asp-action="Delete">
+	<input asp-for="IdOperador" hiden />
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Delete Pacote</h2>
+			<hr/>
+		</div>
+		<div class="mb-3">
+			<label asp-for="NomeOperador"></label>
+			<input asp-for="NomeOperador" disabled class="form-control"/>
+
+		</div>
+		@*<div asp-validation-summary="All"></div>*@
+		<div class="mb-3">
+			<label asp-for="EmailOperador"></label>
+			<input asp-for="EmailOperador" disabled class="form-control"/>
+
+		</div>
+		<button type="submit" class="btn btn-danger" style="width: 150px">Delete</button>
+		<a asp-controller="Operador" asp-action="Index" class="btn btn-secondary" style="width: 150px">
+			Retornar Lista
+
+		</a>
+	</div>
+
+</form>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+}
+	

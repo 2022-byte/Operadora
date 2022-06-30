@@ -4,21 +4,23 @@ using Operadora.Models;
 
 namespace Operadora.Controllers
 {
-    public class PacoteController : Controller
+    public class ClienteController :   Controller
     {
         private readonly ApplicationDbContext _db;
 
-        public PacoteController(ApplicationDbContext db)
+        public ClienteController(ApplicationDbContext db)
         {
             _db = db;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Pacote> objPacoteList = _db.Pacotes.ToList();
+            IEnumerable<Cliente> objClienteList = _db.Clientes.ToList();
 
-            return View(objPacoteList);
+
+            return View(objClienteList);
         }
+       
 
         // get action
         public IActionResult Create()
@@ -31,17 +33,17 @@ namespace Operadora.Controllers
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Pacote obj)
+        public IActionResult Create(Cliente obj)
         {
-            if (obj.NomePacote == obj.ConteudoPacote.ToString())
+            if (obj.NomeCliente == obj.Email.ToString())
             {
-                ModelState.AddModelError("NomePacote", "O nome do conteudo é igual ao nome do pacote. ");
+                ModelState.AddModelError("NomeCliente", "O nome do Cliente é igual ao endereço de email. ");
             }
             if (ModelState.IsValid)
             {
-                _db.Pacotes.Add(obj);
+                _db.Clientes.Add(obj);
                 _db.SaveChanges();
-                return RedirectToAction("Index", "Pacote");
+                return RedirectToAction("Index", "Cliente");
 
             }
 
@@ -56,38 +58,39 @@ namespace Operadora.Controllers
                 return NotFound();
             }
 
-            var pacoteFromDb = _db.Pacotes.Find(id);
+            var clienteFromDb = _db.Clientes.Find(id);
             //var pacoteFromDbFirst = _db.Pacotes.FirstOrDefault(u => u.IdPacote==id);
             //var pacoteFromDbSingle = _db.Pacotes.SingleOrDefault(u => u.IdPacote == id);
 
-            if (pacoteFromDb == null)
+            if (clienteFromDb == null)
             {
                 return NotFound();
             }
 
-            return View(pacoteFromDb);
+            return View(clienteFromDb);
 
         }
 
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Pacote obj)
+        public IActionResult Edit(Cliente obj)
         {
-            if (obj.NomePacote == obj.ConteudoPacote.ToString())
+            if (obj.NomeCliente == obj.Email.ToString())
             {
-                ModelState.AddModelError("NomePacote", "O nome do conteudo é igual ao nome do pacote. ");
+                ModelState.AddModelError("NomeCliente", "O nome do Cliente é igual ao endereço de email. ");
             }
             if (ModelState.IsValid)
             {
-                _db.Pacotes.Update(obj);
+                _db.Clientes.Update(obj);
                 _db.SaveChanges();
-                return RedirectToAction("Index", "Pacote");
+                return RedirectToAction("Index", "Cliente");
 
             }
 
             return View(obj);
         }
+
         // get action
         public IActionResult Delete(int? id)
         {
@@ -96,37 +99,37 @@ namespace Operadora.Controllers
                 return NotFound();
             }
 
-            var pacoteFromDb = _db.Pacotes.Find(id);
+            var clienteFromDb = _db.Clientes.Find(id);
             //var pacoteFromDbFirst = _db.Pacotes.FirstOrDefault(u => u.IdPacote==id);
             //var pacoteFromDbSingle = _db.Pacotes.SingleOrDefault(u => u.IdPacote == id);
 
-            if (pacoteFromDb == null)
+            if (clienteFromDb == null)
             {
                 return NotFound();
             }
 
-            return View(pacoteFromDb);
+            return View(clienteFromDb);
 
         }
 
         //Post
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)
         {
-            var obj = _db.Pacotes.Find(id);
+            var obj = _db.Clientes.Find(id);
             if (obj == null)
             {
                 return NotFound();
             }
 
-            _db.Pacotes.Remove(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+            _db.Clientes.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
 
-            
 
-            
+
+
         }
     }
 }

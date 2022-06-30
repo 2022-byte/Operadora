@@ -1,0 +1,35 @@
+﻿@model Pacote
+
+<form method="post" asp-action="Delete">
+	<input asp-for="IdPacote" hiden />
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Delete Pacote</h2>
+			<hr/>
+		</div>
+		<div class="mb-3">
+			<label asp-for="NomePacote"></label>
+			<input asp-for="NomePacote" disabled class="form-control"/>
+
+		</div>
+		@*<div asp-validation-summary="All"></div>*@
+		<div class="mb-3">
+			<label asp-for="ConteudoPacote"></label>
+			<input asp-for="ConteudoPacote" disabled class="form-control"/>
+
+		</div>
+		<button type="submit" class="btn btn-danger" style="width: 150px">Delete</button>
+		<a asp-controller="Pacote" asp-action="Index" class="btn btn-secondary" style="width: 150px">
+			Retornar Lista
+
+		</a>
+	</div>
+
+</form>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+}
+	
