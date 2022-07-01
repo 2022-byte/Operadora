@@ -41,6 +41,7 @@ namespace Operadora.Controllers
             {
                 _db.Pacotes.Add(obj);
                 _db.SaveChanges();
+                TempData["Sucesso"] = "Pacote Criado com Sucesso";
                 return RedirectToAction("Index", "Pacote");
 
             }
@@ -82,6 +83,7 @@ namespace Operadora.Controllers
             {
                 _db.Pacotes.Update(obj);
                 _db.SaveChanges();
+                TempData["Sucesso"] = "Pacote update com Sucesso";
                 return RedirectToAction("Index", "Pacote");
 
             }
@@ -122,7 +124,8 @@ namespace Operadora.Controllers
 
             _db.Pacotes.Remove(obj);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["Sucesso"] = "Pacote deleted com Sucesso";
+            return RedirectToAction("Index");
 
             
 

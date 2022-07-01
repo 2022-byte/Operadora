@@ -5,21 +5,35 @@
 
 
 
-<h1>Clientes</h1>
+<h1>Operador</h1>
 <div class="container p-3">
 	<div class="row pt-4">
 		<div class="col-6">
 			<h2 class="text-primary">Lista de Clientes</h2>
 		</div>
 		<div class="col-6 text-end">
+			
+			<a asp-controller="Pacote" asp-action="Create" class="btn btn-dark mx-1">
+				<i class="bi bi-file-plus"></i> &nbsp; Adicionar um novo Pacote
+			</a>
+
+			<a asp-controller="Pacote" asp-route-NomeCliente="@ViewContext" class="btn btn-dark mx-1">
+				<i class="bi bi-file-plus"></i> &nbsp; Ver Lista de  Pacotes
+			</a>
+			
+			<br/><br />
+			<br/><br />
+
 			<a asp-controller="Cliente" asp-action="Create" class="btn btn-primary">
 				<i class="bi bi-file-plus"></i> &nbsp; Adicionar um novo cliente
 			</a>
-				
+			
+			
+			<br/><br />
 
 		</div>
 	</div>
-	<br/><br />
+	
 
 
 	<table class="table table-bordered table-striped" style="width: 100%">
